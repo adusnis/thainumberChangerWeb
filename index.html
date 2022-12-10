@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      textarea{
+        margin-top: 10px;
+        width: 80vw;
+        height: 70vh;
+      }
+      body{
+        text-align: center;
+      }
+      button{
+        margin: 10px;
+      }
+    </style>
+</head>
+<body>
+  <h2>โปรแกรมเปลี่ยนเลขอารบิกเป็นเลขไทย</h2>
+    <textarea
+      type="text"
+      id="textInput"
+    ></textarea><br>
+    <input type="button" onclick="changeNum()" value="เปลี่ยนเป็นเลขไทย">
+    <input type="button" onclick="copy()" value="คัดลอก">
+    <input type="button" onclick="Clear()" value="ล้าง">
+
+    <script>
+      document.getElementById("textInput").focus();
+      function changeNum(){
+        var text = document.getElementById("textInput").value;
+        text = text.replace("1","๑")
+        .replace(/2/g,"๒")
+        .replace(/3/g,"๓")
+        .replace(/4/g,"๔")
+        .replace(/5/g,"๕")
+        .replace(/6/g,"๖")
+        .replace(/7/g,"๗")
+        .replace(/8/g,"๘")
+        .replace(/9/g,"๙")
+        .replace(/0/g,"๐");
+        document.getElementById("textInput").value = text;
+      }
+      function copy(){
+        var copyText = document.getElementById("textInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      }
+      function Clear(){
+        document.getElementById("textInput").value = "";
+      }
+    </script>
+</body>
+</html>
