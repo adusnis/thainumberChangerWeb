@@ -6,27 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       textarea{
-        margin-top: 10px;
-        width: 80vw;
+        margin-top: 40px;
+        width: 90vw;
         height: 50vh;
       }
       body{
+        margin: 0%;
         text-align: center;
+        background-color: rgb(235, 245, 247);
       }
       button{
-        margin: 10px;
+        margin: 20px;
+      }
+      .command{
+        margin: 20px;
+        background-color: rgb(0, 196, 0);
+        color: rgb(255, 255, 255);
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 2px 2px;
+        cursor: pointer;
+        border: none;
+      }
+      .change{
+        margin-top: 10px;
+        border: solid  rgb(0, 255, 0);
+        background-color: white;
+        color: rgb(84, 84, 84);
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #sinsuda{
+        color: rgb(67, 67, 67);
+        position: fixed;
+        top: 14px;
+        left: 0px;
+        text-decoration: none;
+        background-color: rgb(255, 255, 255);
+        padding: 5px;
+        border-right: solid rgb(67, 67, 67);;
+      }
+      header{
+        height: 40px;
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        text-align: center;
+      }
+      h3{
+        color: rgb(67, 67, 67);
+        margin: 5px;
       }
     </style>
 </head>
 <body>
-  <h2>โปรแกรมเปลี่ยนเลขอารบิกเป็นเลขไทย</h2>
-    <textarea
+  <header>
+  <a id="sinsuda" href="https://sinsuda.com">โปรแกรมอื่น ๆ</a>
+  <h3>โปรแกรมเปลี่ยนเลขอารบิกเป็นเลขไทย</h3>
+  </header>
+  <textarea
       type="text"
       id="textInput"
     ></textarea><br>
-    <input type="button" onclick="changeNum()" value="เปลี่ยนเป็นเลขไทย">
-    <input type="button" onclick="copy()" value="คัดลอก">
-    <input type="button" onclick="Clear()" value="ล้าง">
+    <input class="command" type="button" onclick="copy()" value="คัดลอก">
+    <input class="command" type="button" onclick="paste()" value="วาง">
+    <input class="command" type="button" onclick="Clear()" value="ล้าง"><br>
+    <input class="change" type="button" onclick="changeNum()" value="เปลี่ยนเป็นเลขไทย">
 
     <script>
       document.getElementById("textInput").focus();
@@ -53,6 +104,10 @@
       function Clear(){
         document.getElementById("textInput").value = "";
       }
+      function paste(){
+        navigator.clipboard.readText().then(text => outputElem.innerText = text);
+      }
+
     </script>
 </body>
 </html>
