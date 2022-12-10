@@ -46,12 +46,11 @@
       #sinsuda{
         color: rgb(67, 67, 67);
         position: fixed;
-        top: 14px;
+        bottom: 0px;
         left: 0px;
         text-decoration: none;
         background-color: rgb(255, 255, 255);
         padding: 5px;
-        border-right: solid rgb(67, 67, 67);;
       }
       header{
         height: 40px;
@@ -75,7 +74,7 @@
       id="textInput"
     ></textarea><br>
     <input class="command" type="button" onclick="copy()" value="คัดลอก">
-    <input class="command" type="button" onclick="paste()" value="วาง">
+    <!--<input class="command" type="button" onclick="Paste()" value="วาง">-->
     <input class="command" type="button" onclick="Clear()" value="ล้าง"><br>
     <input class="change" type="button" onclick="changeNum()" value="เปลี่ยนเป็นเลขไทย">
 
@@ -104,9 +103,11 @@
       function Clear(){
         document.getElementById("textInput").value = "";
       }
-      function paste(){
-        navigator.clipboard.readText().then(text => outputElem.innerText = text);
-      }
+      /*function Paste() {
+        navigator.clipboard.readText().then(clipText => {
+          document.getElementById("textInput").innerText += clipText;
+        });
+      } */
 
     </script>
 </body>
