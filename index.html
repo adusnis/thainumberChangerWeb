@@ -32,7 +32,7 @@
       document.getElementById("textInput").focus();
       function changeNum(){
         var text = document.getElementById("textInput").value;
-        text = text.replace("1","๑")
+        text = text.replace(/1/g,"๑")
         .replace(/2/g,"๒")
         .replace(/3/g,"๓")
         .replace(/4/g,"๔")
