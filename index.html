@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เปลี่ยนเลขอารบิกเป็นเลขไทย</title>
+    <title id="title">1 เป็น ๑</title>
     <style>
       textarea{
         margin-top: 40px;
@@ -64,36 +64,75 @@
         color: rgb(67, 67, 67);
         margin: 5px;
       }
+      .head{
+        display: inline
+      }
     </style>
 </head>
 <body>
   <header>
   <a id="sinsuda" href="https://sinsuda.com">โปรแกรมอื่น ๆ</a>
-  <h3>โปรแกรมเปลี่ยนเลขอารบิกเป็นเลขไทย</h3>
+  <div>
+    <h3 class="head">1 เป็น ๑</h3> <button onclick="switchLang()">switch</button>
+  </div>
   </header>
   <textarea
       type="text"
       id="textInput"
     ></textarea><br>
-    <input class="change" type="button" onclick="changeNum()" value="เปลี่ยนเป็นเลขไทย"><br>
+    <input class="change" type="button" onclick="changeNum()" value="เปลี่ยน"><br>
     <input class="command" type="button" onclick="copy()" value="คัดลอก">
     <!--<input class="command" type="button" onclick="Paste()" value="วาง">-->
     <input class="command" type="button" onclick="Clear()" value="ล้าง">
 
     <script>
       document.getElementById("textInput").focus();
+
+      var count = 0
+
+      function switchLang(){
+        console.log(count)
+        count = count + 1
+        let title = document.getElementById("title")
+        let head = document.getElementsByClassName("head")[0]
+        if (count%2 == 0){
+          head.innerHTML = "1 เป็น ๑"
+          title.innerHTML = "1 เป็น ๑"
+        }
+        else{
+          head.innerHTML = "๑ เป็น 1"
+          title.innerHTML = "๑ เป็น 1"
+        }
+      }
+
       function changeNum(){
         var text = document.getElementById("textInput").value;
-        text = text.replace(/1/g,"๑")
-        .replace(/2/g,"๒")
-        .replace(/3/g,"๓")
-        .replace(/4/g,"๔")
-        .replace(/5/g,"๕")
-        .replace(/6/g,"๖")
-        .replace(/7/g,"๗")
-        .replace(/8/g,"๘")
-        .replace(/9/g,"๙")
-        .replace(/0/g,"๐");
+        
+        if (count%2 == 0){
+          text = text.replace(/1/g, "๑")
+          .replace(/2/g,"๒")
+          .replace(/3/g,"๓")
+          .replace(/4/g,"๔")
+          .replace(/5/g,"๕")
+          .replace(/6/g,"๖")
+          .replace(/7/g,"๗")
+          .replace(/8/g,"๘")
+          .replace(/9/g,"๙")
+          .replace(/0/g,"๐");
+        }
+        else{
+          text = text.replace(/๑/g, "1")
+          .replace(/๒/g, "2")
+          .replace(/๓/g, "3")
+          .replace(/๔/g, "4")
+          .replace(/๕/g, "5")
+          .replace(/๖/g, "6")
+          .replace(/๗/g, "7")
+          .replace(/๘/g, "8")
+          .replace(/๙/g, "9")
+          .replace(/๐/g, "0");
+        }
+        
         document.getElementById("textInput").value = text;
       }
       function copy(){
